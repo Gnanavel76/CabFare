@@ -1,0 +1,152 @@
+.hero {
+    background-image: url("../../assets/cloud.png");
+    background-position: top 30px center;
+}
+
+.city-wrapper {
+    background-image: url("../../assets/city.svg");
+    background-repeat: repeat-x;
+    background-position: right bottom 6px;
+    background-size: auto 90%;
+    width: 500%;
+    height: 100%;
+    animation: city 20s linear infinite;
+}
+
+#source,
+#destination {
+    transform-origin: center bottom;
+    transform-box: fill-box;
+    animation: zoomIn 0.5s ease-in;
+}
+
+#mapLine path {
+    stroke-dasharray: 1100;
+    stroke-dashoffset: 1100;
+    animation: mapPath 5s linear infinite;
+    animation-delay: 0.6s;
+}
+
+#front-wheel,
+#back-wheel {
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: rotateWheel 1s linear infinite;
+}
+
+#car {
+    animation: moveCar 1s linear infinite alternate-reverse;
+}
+
+#left-tree-top-branch,
+#right-tree-top-branch {
+    transform-origin: center bottom;
+    transform-box: fill-box;
+    animation: tree 1s linear infinite alternate-reverse;
+}
+
+#left-tree-branch-1,
+#left-tree-branch-2,
+#left-tree-branch-3,
+#left-tree-branch-4,
+#right-tree-branch-1,
+#right-tree-branch-2,
+#right-tree-branch-3,
+#right-tree-branch-4 {
+    transform-origin: left bottom;
+    transform-box: fill-box;
+    animation: tree-branch 1s linear infinite alternate-reverse;
+}
+
+#left-tree-branch-2,
+#left-tree-branch-3,
+#left-tree-branch-4 {
+    transform-origin: right bottom;
+}
+
+#left-tree-branch-2 {
+    animation-direction: alternate;
+}
+
+#top-leaf,
+#bottom-leaf {
+    transform-origin: left center;
+    transform-box: fill-box;
+    animation: leaf 1s linear infinite alternate-reverse;
+}
+
+@keyframes leaf {
+    from {
+        transform: rotateZ(5deg);
+    }
+
+    to {
+        transform: rotateZ(-2deg);
+    }
+}
+
+@keyframes rotateWheel {
+    from {
+        transform: rotateZ(360deg);
+    }
+
+    to {
+        transform: rotateZ(0deg);
+    }
+}
+
+@keyframes city {
+    100% {
+        transform: translateX(1200px);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes moveCar {
+    100% {
+        transform: translateY(-2px);
+    }
+
+    50% {
+        transform: translateY(2px);
+    }
+
+    0% {
+        transform: translateY(-2px);
+    }
+}
+
+@keyframes tree {
+    from {
+        transform: rotate(3deg) translateX(3px);
+    }
+
+    to {
+        transform: rotate(-3deg) translateX(-3px);
+    }
+}
+
+@keyframes tree-branch {
+    from {
+        transform: rotate(-2deg);
+    }
+
+    to {
+        transform: rotate(8deg);
+    }
+}
+
+@keyframes mapPath {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
