@@ -23,3 +23,5 @@ data.js
 *.njsproj
 *.sln
 *.sw?
+
+.vercel

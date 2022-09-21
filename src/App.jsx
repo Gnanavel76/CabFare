@@ -5,6 +5,7 @@ import { useJsApiLoader } from '@react-google-maps/api';
 import { ToastContainer } from 'react-toastify';
 import { createTheme, ThemeProvider, Typography } from '@mui/material';
 import { useRoute } from './store';
+import { gmap, ipInfo } from "./Env"
 import 'react-toastify/dist/ReactToastify.css';
 
 const libraries = ["places"]
@@ -109,8 +110,7 @@ const theme = createTheme({
     }
   }
 });
-const gmap = import.meta.env.VITE_GOOGLE_MAP
-const ipInfo = import.meta.env.VITE_IPINFO
+
 
 const App = () => {
   const { isLoaded } = useJsApiLoader({
