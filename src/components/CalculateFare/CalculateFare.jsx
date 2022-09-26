@@ -224,15 +224,15 @@ const CalculateFare = () => {
     }
     return (
         <div className='h-screen flex flex-col-reverse md:flex-row'>
-            <div className="flex flex-col bg-white border-r w-full md:w-[380px] lg:w-[406px] xl:w-[550px] h-1/2 md:h-full">
-                <div className="bg-white px-6 pt-8 hidden md:block" >
-                    <div className='relative mb-8 md:mb-10'>
-                        <button onClick={goBack} className="absolute top-1/2 -translate-y-1/2 text-base sm:text-2xl">
+            <div className="flex flex-col bg-white border-r w-full md:w-[380px] lg:w-[406px] 2xl:w-[540px] h-1/2 md:h-full">
+                <div className="bg-white px-4 pt-5 hidden md:block" >
+                    <div className='relative mb-6'>
+                        <button onClick={goBack} className="absolute top-1/2 -translate-y-1/2 text-base sm:text-lg xl:text-2xl">
                             <MdOutlineArrowBack />
                         </button>
-                        <h6 className="font text-center font-semibold text-base sm:text-2xl">CabFare</h6>
+                        <h6 className="font text-center font-semibold text-base sm:text-lg xl:text-2xl">CabFare</h6>
                     </div>
-                    <div className="pb-5 border-b">
+                    <div className="pb-4 border-b">
                         <Autocomplete
                             freeSolo
                             loading={loading}
@@ -253,7 +253,7 @@ const CalculateFare = () => {
                                     helperText={errors.originErr !== "" ? errors.originErr : ""}
                                     {...params}
                                     placeholder="Add a pickup location"
-                                    sx={{ mb: 1.5, "& .MuiInputBase-root": { pr: "9px!important" }, "& .MuiInputBase-input": { px: "0!important" } }}
+                                    sx={{ mb: 1.5, "& .MuiInputBase-root": { pr: "9px!important" }, "& .MuiInputBase-input": { px: "0!important", py: '6px!important' } }}
                                     InputProps={{
                                         ...params.InputProps,
                                         startAdornment: (
@@ -311,7 +311,7 @@ const CalculateFare = () => {
                                         helperText={errors.pickupTime !== "" ? errors.pickupTime : ""}
                                         fullWidth
                                         {...params}
-                                        sx={{ mb: 3, "& .MuiInputBase-root": { pl: "9px" } }}
+                                        sx={{ mb: 2, "& .MuiInputBase-root": { pl: "9px" } }}
                                         InputProps={{
                                             startAdornment: (
                                                 <InputAdornment position="start" sx={{ color: "#9ca3af99", fontSize: "1.25rem", px: 1 }}>
@@ -328,19 +328,19 @@ const CalculateFare = () => {
                                 ? <ImSpinner8 className='animate-spin text-lg' />
                                 : "Calculate"}
                         </button> */}
-                        <LoadingButton loading={calculating} onClick={modifySearch} sx={{ mb: 2, borderRadius: 2, display: 'block', mx: "auto", py: 2, fontSize: { sm: "1.2rem" } }} variant="contained">Modify Search</LoadingButton>
+                        <LoadingButton loading={calculating} onClick={modifySearch} sx={{ mb: 1, borderRadius: 2, display: 'block', mx: "auto", py: 2, fontSize: { xs: '1rem', xl: "1.2rem" } }} variant="contained">Modify Search</LoadingButton>
                     </div>
                 </div >
                 {
                     calculating
                         ?
-                        <div className='px-3 sm:px-6 pt-5 pb-8 overflow-auto'>
+                        <div className='px-3 sm:px-6 pt-4 pb-8 overflow-auto'>
                             <div className="animate-pulse mb-6 h-7 rounded-md bg-gray-200" ></div >
                             <div className="animate-pulse mb-8 h-7 rounded-md bg-gray-200"></div>
                             <h6 className="text-xl text-gray-500 mb-6 font-medium border-b-2 pb-2">Ride Fare</h6>
                             <div className='flex flex-col gap-y-3'>
                                 {new Array(3).fill(0).map((cab, index) => (
-                                    <div key={index} className='px-4 py-4  flex gap-x-8 items-center border-2 border-inputBorder rounded-lg'>
+                                    <div key={index} className='px-3 py-4  flex gap-x-8 items-center border-2 border-inputBorder rounded-lg'>
                                         <div className="w-20 bg-gray-200 h-20 rounded-full"></div>
                                         <div className='flex-1'>
                                             <div className="animate-pulse mb-2 h-6 rounded-md bg-gray-200"></div>
@@ -353,23 +353,23 @@ const CalculateFare = () => {
                             </div>
                         </div >
                         :
-                        <div className='px-3 sm:px-6 pt-5 pb-8 overflow-auto '>
-                            <h6 className="text-sm sm:text-lg mb-4 md:mb-6 font-medium">Distance: {distance.text}</h6>
-                            <h6 className="text-sm sm:text-lg mb-6 md:mb-8 font-medium">Duration: {duration.text}</h6>
-                            <h6 className="text-sm sm:text-lg text-gray-500 mb-6 font-medium border-b-2 pb-2">Ride Fare</h6>
+                        <div className='px-4 pt-5 pb-8 overflow-auto '>
+                            <h6 className="text-sm sm:text-base 2xl:text-lg mb-3 md:mb-4 font-medium">Distance: {distance.text}</h6>
+                            <h6 className="text-sm sm:text-base 2xl:text-lg mb-6 md:mb-8 font-medium">Duration: {duration.text}</h6>
+                            <h6 className="text-sm sm:text-base 2xl:text-lg text-gray-500 mb-5 font-medium border-b-2 pb-2">Ride Fare</h6>
                             <div className='flex flex-col gap-y-3'>
                                 {cabs.map(cab => (
-                                    <div key={cab.id} className='px-2 sm:px-4 py-4 flex gap-x-4 md:gap-x-5 items-center border-2 border-inputBorder rounded-lg w-full'>
-                                        <img className='w-16 xl:w-20' src={cab.image} alt="" />
+                                    <div key={cab.id} className='px-2 sm:px-3 py-4 flex gap-x-4 md:gap-x-5 items-center border-2 border-inputBorder rounded-lg w-full'>
+                                        <img className='w-16 2xl:w-20' src={cab.image} alt="" />
                                         <div className='grow min-w-0'>
                                             <div className='flex justify-between mb-1'>
-                                                <h6 className="text-base sm:text-lg font-semibold tracking-wide truncate">{cab.title}</h6>
-                                                <h6 className="text-base sm:text-lg font-medium tracking-wide">
+                                                <h6 className="text-base 2xl:text-lg font-semibold tracking-wide truncate">{cab.title}</h6>
+                                                <h6 className="text-base 2xl:text-lg font-medium tracking-wide mr-1.5">
                                                     {calculateFare(cab.multiplier)}
                                                 </h6>
                                             </div>
-                                            <h6 className="text-xs sm:text-sm lg:text-base mb-1 text-gray-500 truncate">{cab.description}</h6>
-                                            <h6 className="text-xs sm:text-sm lg:text-base text-gray-500 ">{calculateDropOff(duration.value)} dropoff</h6>
+                                            <h6 className="text-xs sm:text-base 2xl:text-lg mb-1 text-gray-500 truncate">{cab.description}</h6>
+                                            <h6 className="text-xs sm:text-base 2xl:text-lg text-gray-500 ">{calculateDropOff(duration.value)} dropoff</h6>
                                         </div>
                                     </div>
                                 ))}
@@ -378,7 +378,7 @@ const CalculateFare = () => {
                 }
 
             </div >
-            <div className="relative bg-white w-full md:w-[calc(100%-380px)] lg:w-[calc(100%-406px)] xl:w-[calc(100%-550px)] h-1/2 md:h-full">
+            <div className="relative bg-white w-full md:w-[calc(100%-380px)] lg:w-[calc(100%-406px)] 2xl:w-[calc(100%-540px)] h-1/2 md:h-full">
                 <button onClick={goBack} className="md:hidden absolute left-5 top-8 w-11 h-11 shadow-md grid place-items-center text-lg bg-white rounded-full z-50">
                     <MdOutlineArrowBack className='text-xl' />
                 </button>
@@ -404,13 +404,13 @@ const CalculateFare = () => {
                         position={origin.location}
                         mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                     >
-                        <h6 className="bg-white px-2 sm:px-4 py-1 sm:py-2.5 text-sm md:text-xl shadow-lg font-medium -translate-y-11 translate-x-6">From {origin.description.split(",")[0]}</h6>
+                        <h6 className="bg-white px-2 sm:px-4 py-1 sm:py-2.5 text-xs md:text-base 2xl:text-xl shadow-lg font-medium -translate-y-11 translate-x-6">From {origin.description.split(",")[0]}</h6>
                     </OverlayView>
                     <OverlayView
                         position={destination.location}
                         mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
                     >
-                        <h6 className="bg-white px-2 sm:px-4 py-1 sm:py-2.5 text-sm md:text-xl shadow-lg font-medium -translate-y-11 translate-x-6">To {destination.description.split(",")[0]}</h6>
+                        <h6 className="bg-white px-2 sm:px-4 py-1 sm:py-2.5 text-sm md:text-base 2xl:text-xl shadow-lg font-medium -translate-y-11 translate-x-6">To {destination.description.split(",")[0]}</h6>
                     </OverlayView>
                 </GoogleMap>
             </div>
